@@ -6,6 +6,7 @@ const { MONGO_URI } = require('../env');
 const userSchema = mongoose.Schema({
   name: String,
   email: String,
+  image:String
 });
 
 // Connect to MongoDB

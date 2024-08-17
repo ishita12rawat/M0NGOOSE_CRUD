@@ -7,20 +7,20 @@ const path=require('path')
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 app.set('view engine', 'ejs');
-app.use(express.static('public'))
+app.use(express.static(path.join(__dirname, 'public')))
 app.get('/',(req,res)=>{
     res.render('index');
 })
 app.post('/create',async(req,res)=>{
-    let {name, email}=req.body;
+    let {name, email,image}=req.body;
 let data=await User.create({
-   name,email
+   name,email,image
  })
     res.redirect('/read')
 })
 app.get('/read',async(req,res)=>{
-   let allusers=await User.find()
-    res.render('read',{allusers})
+   let users=await User.find()
+    res.render('read',{users})
 })
 
 app.get('/edit/:userid', async (req, res) => {
