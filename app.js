@@ -39,8 +39,8 @@ app.get('/edit/:userid', async (req, res) => {
 
 app.post('/update/:userid', async (req, res) => {
     try {
-        const { name, email } = req.body;
-        await User.findByIdAndUpdate(req.params.userid, { name, email }, { new: true });
+        const { name, email ,image} = req.body;
+        await User.findByIdAndUpdate(req.params.userid, { name, email ,image}, { new: true });
         res.redirect('/read');
     } catch (err) {
         console.error(err);
